@@ -97,6 +97,7 @@ public class ChannelViewModel extends BaseMessageListViewModel {
     @Nullable
     private MessageCollectionHandler handler;
     private boolean needToLoadMessageCache = true;
+    private boolean isChatScreenVisible = false;
     @NonNull
     private final SendbirdChatWrapper sendbirdChatWrapper;
     @NonNull
@@ -656,9 +657,16 @@ public class ChannelViewModel extends BaseMessageListViewModel {
         return null;
     }
 
-    private void markAsRead() {
+    public void markAsRead() {
+        if (!isChatScreenVisible) return;
+
         Logger.dev("markAsRead");
         if (channel != null) channel.markAsRead(null);
+    }
+
+    public void setIsChatScreenVisible(boolean visible) {
+        Logger.dev("setIsChatScreenVisible: " + visible);
+        isChatScreenVisible = visible;
     }
 
     @UiThread
