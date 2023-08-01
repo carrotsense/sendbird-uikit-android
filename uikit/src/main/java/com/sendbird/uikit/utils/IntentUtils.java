@@ -111,7 +111,7 @@ public class IntentUtils {
 
     @NonNull
     public static Intent getWebViewerIntent(@NonNull String url) {
-        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        if (!url.startsWith("pivotapp://") && !url.startsWith("http://") && !url.startsWith("https://")) {
             url = "http://" + url;
         }
         Uri uri = Uri.parse(url);
