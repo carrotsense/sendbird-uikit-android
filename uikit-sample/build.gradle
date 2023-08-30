@@ -26,6 +26,8 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    namespace 'com.sendbird.uikit'
 }
 
 dependencies {
