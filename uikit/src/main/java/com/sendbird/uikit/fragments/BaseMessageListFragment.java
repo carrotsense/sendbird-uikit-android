@@ -841,6 +841,12 @@ abstract public class BaseMessageListFragment<
     @NonNull
     private FileMessageCreateParams getFileMessageCreateParams(@NonNull FileInfo fileInfo) {
         final FileMessageCreateParams imageParams = fileInfo.toFileParams();
+
+        if (targetMessage != null && channelConfig.getReplyType() != ReplyType.NONE) {
+            imageParams.setParentMessageId(targetMessage.getMessageId());
+            imageParams.setReplyToChannel(true);
+        }
+
         final CustomParamsHandler customHandler = SendbirdUIKit.getCustomParamsHandler();
         if (customHandler != null) {
             customHandler.onBeforeSendFileMessage(imageParams);
