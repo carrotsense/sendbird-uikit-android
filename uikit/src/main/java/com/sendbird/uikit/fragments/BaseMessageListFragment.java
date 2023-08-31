@@ -809,6 +809,11 @@ abstract public class BaseMessageListFragment<
     }
 
     private void sendFileMessage(@NonNull FileInfo info, @NonNull FileMessageCreateParams params) {
+        if (targetMessage != null && channelConfig.getReplyType() != ReplyType.NONE) {
+            params.setParentMessageId(targetMessage.getMessageId());
+            params.setReplyToChannel(true);
+        }
+
         final CustomParamsHandler customHandler = SendbirdUIKit.getCustomParamsHandler();
         if (customHandler != null) {
             customHandler.onBeforeSendFileMessage(params);
