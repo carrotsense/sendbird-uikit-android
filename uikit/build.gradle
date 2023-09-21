@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlinx-serialization'
-    id 'org.jetbrains.dokka' version "$kotlin_version"
+    id 'org.jetbrains.dokka' version "1.9.0"
     id 'kotlin-parcelize'
 }
 
