@@ -18,11 +18,13 @@ import com.sendbird.uikit.interfaces.OnItemClickListener
 import com.sendbird.uikit.internal.extensions.drawFeedback
 import com.sendbird.uikit.internal.extensions.hasParentMessage
 import com.sendbird.uikit.internal.interfaces.OnFeedbackRatingClickListener
+import com.sendbird.uikit.internal.ui.widgets.OnLinkClickListener
 import com.sendbird.uikit.internal.ui.widgets.OnLinkLongClickListener
 import com.sendbird.uikit.model.MessageListUIParams
 import com.sendbird.uikit.model.TextUIConfig
 import com.sendbird.uikit.model.configurations.ChannelConfig
 import com.sendbird.uikit.utils.DrawableUtils
+import com.sendbird.uikit.utils.IntentUtils
 import com.sendbird.uikit.utils.MessageUtils
 import com.sendbird.uikit.utils.ViewUtils
 
@@ -110,6 +112,12 @@ internal class OtherUserMessageView @JvmOverloads internal constructor(
                 DrawableUtils.setTintList(context, ogtagBackground, ogtagBackgroundTint)
             binding.tvMessage.setOnClickListener { binding.contentPanel.performClick() }
             binding.tvMessage.setOnLongClickListener { binding.contentPanel.performLongClick() }
+            binding.tvMessage.onLinkClickListener = object : OnLinkClickListener {
+                override fun onClick(textView: TextView, link: String): Boolean {
+                    context.startActivity(IntentUtils.getWebViewerIntent(link))
+                    return true
+                }
+            }
             binding.tvMessage.onLinkLongClickListener = object : OnLinkLongClickListener {
                 override fun onLongClick(textView: TextView, link: String): Boolean {
                     return binding.contentPanel.performLongClick()
