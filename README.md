@@ -1,6 +1,6 @@
 # PIVOT
 
-## Sendbird UIKit version: v3.13.0 (Feb 1, 2024)
+## Sendbird UIKit version: v3.21.0 (Sep 12, 2024) with Chat SDK `v4.19.0`
 
 ## Updating Sendbird library
 Pulling from the Sendbird repository (`sendbird/sendbird-uikit-android`) causes a lot of hard-to-fix conflicts, so it's much easier to rebase our changes on top of the Sendbird latest `main` branch.
@@ -11,6 +11,8 @@ git checkout origin/main
 git rebase -i sendbird/main
 git checkout -B main
 git push origin -f
+
+Create PR with updated version in README.md
 ```
 Resolve all conflicts by checking the original commits (https://github.com/carrotsense/sendbird-uikit-android/commits/main) and preserving the implemented functionality.
 
